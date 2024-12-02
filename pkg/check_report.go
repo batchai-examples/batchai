@@ -35,41 +35,24 @@ const CHECK_REPORT_JSON_FORMAT = `
        "severity_reason": "..."
     }
   ],
-  "overall_severity": "trivial" or "minor" or "major" or "critical"
+  "model_usage_metrics": {}
 }`
 
-type CheckIssueT struct {
-	ShortDescription     string   `json:"short_description"`
-	DetailedExplaination string   `json:"detailed_explaination"`
-	Suggestion           string   `json:"suggestion"`
-	IssueLineBegin       int      `json:"issue_line_begin"`
-	IssueLineEnd         int      `json:"issue_line_end"`
-	IssueReferenceUrls   []string `json:"issue_reference_urls"`
-	Severity             string   `json:"severity"`
-	SeverityReason       string   `json:"severity_reason"`
-}
-
-type CheckIssue = *CheckIssueT
-
-func (me CheckIssue) Print(console comm.Console) {
-	console.NewLine().Printf("Short Description: %s", me.ShortDescription)
-	console.NewLine().Printf("Detailed Description: %s", me.DetailedExplaination)
-	console.NewLine().Printf("Severity: %s", me.Severity)
-	console.NewLine().Printf("Severity Reason: %s", me.SeverityReason)
-	console.NewLine().Printf("Suggestion: %s", me.Suggestion)
-	console.NewLine().Printf("IssueLineBegin: %d", me.IssueLineBegin)
-	console.NewLine().Printf("IssueLineEnd: %d", me.IssueLineEnd)
-	console.NewLine().Printf("IssueReferenceUrls: %s", me.IssueReferenceUrls)
-}
-
 type CheckReportT struct {
-	HasIssue          bool              `json:"has_issue"`
-	OverallSeverity   string            `json:"overall_severity"`
-	Issues            []CheckIssue      `json:"issues"`
-	FixedCode         string            `json:"fixed_code"`
-	OriginalCode      string            `json:"original_code"`
-	Path              string            `json:"path"`
-	ModelUsageMetrics ModelUsageMetrics `json:"model_usage_metrics"`
+	HasIssue              bool
+	Issues                []Issue
+	ModelUsageMetrics     ModelUsageMetrics
+}
+
+type Issue struct {
+	ShortDescription      string
+	DetailedExplanation   string
+	Suggestion            string
+	IssueLineBegin        int
+	IssueLineEnd          int
+	IssueReferenceURLs  []string
+	Severity              string
+	SeverityReason        string
 }
 
 type CheckReport = *CheckReportT

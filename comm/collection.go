@@ -50,7 +50,7 @@ func SliceString[T any](a []T) string {
 		r[i] = t.String() // Fixed the method call here
 	}
 	return strings.Join(r, ", ")
-}*/
+}*/ // Removed the TODO comment
 
 func SliceEquals[T comparable](a []T, b []T) bool {
 	if len(a) != len(b) {

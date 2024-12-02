@@ -3,7 +3,6 @@ package batchai
 import (
 	"fmt"
 	"path"
-	"strings"
 	"sync"
 
 	"github.com/qiangyt/batchai/comm"

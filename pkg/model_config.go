@@ -12,7 +12,7 @@ type ModelConfigT struct {
 	ContextWindow           int64         `mapstructure:"context_window"`
 	ApiKey                  string        `mapstructure:"api_key"`
 	BaseUrl                 string        `mapstructure:"base_url"`
-	Timeout                 time.Duration `mapstructure:"timeout,omitempty" default:"10s"`
+	Timeout                 time.Duration `mapstructure:"timeout,omitempty" json:"timeout,omitempty,default:\"10s\""`
 	ProxyUrl                string        `mapstructure:"proxy_url,omitempty"`
 	ProxyUser               string        `mapstructure:"proxy_user,omitempty"`
 	ProxyPass               string        `mapstructure:"proxy_pass,omitempty"`

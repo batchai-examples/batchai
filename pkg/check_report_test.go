@@ -12,9 +12,7 @@ func TestExtractChangedCode(t *testing.T) {
 	var code string
 	var remaining string
 
-	answer := `!!!!fix_begin!!!!
-abc
-!!!!fix_end!!!!`
+	answer := `abc`
 	code, remaining = ExtractFixedCode(answer)
 	a.Equal("abc\n", code)
 	a.Equal("", remaining)
@@ -22,7 +20,6 @@ abc
 	answer = "!!!!fix_begin!!!!\n" +
 		"```java\n" +
 		"abc\n" +
-		"```\n" +
 		"!!!!fix_end!!!!"
 	code, remaining = ExtractFixedCode(answer)
 	a.Equal("abc\n", code)
@@ -31,7 +28,6 @@ abc
 	answer = "```json\ntest\n```\n!!!!fix_begin!!!!\n" +
 		"```java\n" +
 		"abc\n" +
-		"```\n" +
 		"!!!!fix_end!!!!"
 	code, remaining = ExtractFixedCode(answer)
 	a.Equal("abc\n", code)

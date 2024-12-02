@@ -4,7 +4,6 @@ import (
 	"time"
 
 	"github.com/openai/openai-go"
-	"github.com/qiangyt/batchai/comm"
 )
 
 type ModelUsageMetricsT struct {

@@ -1,8 +1,6 @@
 package batchai
 
 import (
-	"strings"
-
 	"github.com/pkg/errors"
 	"github.com/qiangyt/batchai/comm"
 )
