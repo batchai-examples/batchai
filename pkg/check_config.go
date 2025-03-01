@@ -20,6 +20,9 @@ func (me CheckConfig) Init(config AppConfig) {
 	model := config.LoadModel(me.ModelId)
 
 	if me.Prompt == nil {
+		if model == nil {
+			panic(fmt.Errorf("model not found for model_id: %s", me.ModelId))
+		}
 		if model.CheckPrompt == nil {
 			panic(fmt.Errorf("missing code check prompt for model: %s", me.ModelId))
 		}

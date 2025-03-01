@@ -85,12 +85,16 @@ func (me AppConfig) Init(command string) {
 	if me.Test == nil {
 		me.Test = &TestConfigT{}
 	}
-	me.Test.Init(me)
+	if me.Test != nil {
+		me.Test.Init(me)
+	}
 
 	if me.Check == nil {
 		me.Check = &CheckConfigT{}
 	}
-	me.Check.Init(me)
+	if me.Check != nil {
+		me.Check.Init(me)
+	}
 }
 
 func (me AppConfig) LoadModel(modelId string) ModelConfig {
